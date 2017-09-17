@@ -1,14 +1,44 @@
 package test.structures.linkedlist;
 
-class Node<T>
+class Node
 {
- T Data;
+ Object data;
 
- Node<T> Next;
+ Node next;
 
-void Node(T Data)
+public Node(Object data)
 {
-this.Data = Data;
+this.data = data;
+this.next = null;
 }
+
+/*
+public void Node()
+{
+this.data = null;
+this.next = null;
+}
+*/
+
+public Object getData()
+		{
+			return data;
+		}
+		
+		public void setData(Object _data)
+		{
+			data = _data;
+		}
+		
+		public Node getNext()
+		{
+			return next;
+		}
+		
+		public void setNext(Node _next)
+		{
+			next = _next;
+		}
+
 
 }

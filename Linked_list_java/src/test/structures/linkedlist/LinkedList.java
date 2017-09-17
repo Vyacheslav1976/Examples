@@ -1,21 +1,38 @@
-package src.test.structures.linkedlist;
+package test.structures.linkedlist;
 
 //import src.test.structures.linkedlist.Node;
 
-class LinkedList<T>
+class LinkedList //implements Iterable<T>
 {
-            Node<T> head;
-            Node<T> tail;
+            Node head;
+            Node tail;
 	int count;
 
-         public override String ToString()
+         public void add(Object data)
+        {
+         Node node = new Node(data);
+		if (head == null)
+		{
+			head = node;
+		}
+		else
+		{
+			tail.setNext( node);
+		}
+	tail = node;
+	count++;
+
+	}
+
+
+         public String toString()
         {
             String obj_string = "";
-            Node<T> current = head;
+            Node current = head;
             while (current != null)
             {
-                obj_string = obj_string + current.Data.ToString() + " ";
-                current = current.Next;
+                obj_string = obj_string + current.getData().toString() + " ";
+                current = current.getNext();
             }
             return obj_string;
         }

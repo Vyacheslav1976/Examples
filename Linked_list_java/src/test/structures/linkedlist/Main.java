@@ -5,8 +5,13 @@ class Main
 {
 	public static void main(String[] args)
 	{
-	Node<String> node;// = new Node<String>("first");
-	node.Data = "a";
-	Node_simple ns;// = new Node_simple();
+//	Node node = new Node("first");
+//	node.Data = "First";
+	LinkedList linkedList = new LinkedList();
+	linkedList.add("Firstr");
+	System.out.println(linkedList.toString());
+	System.out.println("I'm here");
+
+
 	}
 }
