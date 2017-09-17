@@ -8,9 +8,15 @@ class Main
 //	Node node = new Node("first");
 //	node.Data = "First";
 	LinkedList linkedList = new LinkedList();
-	linkedList.add("Firstr");
+	linkedList.add("First");
+	linkedList.add("Second");
+	linkedList.add("Third");
+	linkedList.add("Third");
+	linkedList.add("Forth");
 	System.out.println(linkedList.toString());
 	System.out.println("I'm here");
+	linkedList.remove("First");
+	System.out.println(linkedList.toString());
 
 
 	}

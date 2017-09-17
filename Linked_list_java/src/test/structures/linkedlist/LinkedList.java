@@ -24,6 +24,38 @@ class LinkedList //implements Iterable<T>
 
 	}
 
+public void remove(Object data)
+{
+	Node current = head;
+	Node previous = null;
+
+	while (current != null)
+	{
+	if (current.getData().equals(data))
+	{
+
+		if (previous == null) // если первый элемент
+			{
+			head = current.getNext();
+			}
+		else //если в середине ли конце
+		{
+			previous.setNext( current.getNext());
+		if (current.getNext() == null)
+			{	
+			tail = previous;
+			}
+		}
+		count--;
+	}
+
+previous = current;
+current = current.getNext();
+}
+}
+
+
+
 
          public String toString()
         {
