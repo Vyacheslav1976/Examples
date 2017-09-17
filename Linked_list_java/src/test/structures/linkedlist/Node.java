@@ -1,9 +1,14 @@
-class Node
+package test.structures.linkedlist;
+
+class Node<T>
 {
- class Data;
- class Next;
-void Node(class Data)
+ T Data;
+
+ Node<T> Next;
+
+void Node(T Data)
 {
 this.Data = Data;
 }
+
 }
