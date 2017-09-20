@@ -4,81 +4,54 @@ using System.Text;
 
 namespace StringCalc
 {
-	public class Calc
-	{
-		public Calc()
-		{
-		}
-		public Boolean Check(string input)
-		{
-			return true;
-		}
+    public class Calc : ICalc
+    {
+        IOperations Operations;
+        public Calc(IOperations Operations)
+        {
+            this.Operations = Operations; // class Operations will form constructor and may have any realisation in according IOperations interface
+        }
 
-		public string Parse(string input)
-		{
-			Stack<string> stack = new Stack<string>();
-			int inpLen = input.Length;
-			char[] charArray = new char[inpLen];
-			int charCount = 0;
-			List<string> polandRecord = new List<string>();
+        public Boolean Check(string input)
+        {
+            return true;
+        }
 
-			bool end = false;
-		StringBuilder operand = new StringBuilder();
-					 while(!end)
-					{
-				if (Char.IsDigit(charArray[charCount])
-				{
-					while (Char.IsDigit(charArray[charCount])
-					{
-						operand.Append(charArray[charCount]);
-						charCount++;
-					}
-					       polandRecord.Add(operand.ToString());
-				}
-					       if (Operations.IsOperation(charArray[charCount]) )
-				{ }
-//					       parenthesis
-						
-							charCount +=1 ;
-					}
+        public string Parse(string input)
+        {
+            Stack<string> stack = new Stack<string>();
+            int inpLen = input.Length;
+            char[] charArray = new char[inpLen];
+            int charCount = 0;
+            List<string> polandRecord = new List<string>();
 
-			stack.Push("first");
-			string sec = stack.Pop();
-			Console.WriteLine(sec);
-			return input;
-		}
+            bool end = false;
+            StringBuilder operand = new StringBuilder();
+            while (!end)
+            {
+                if (Char.IsDigit(charArray[charCount]))
+                {
+                    while (Char.IsDigit(charArray[charCount]))
+                    {
+                        operand.Append(charArray[charCount]);
+                        charCount++;
+                    }
+                    polandRecord.Add(operand.ToString());
+                }
+                if (Operations.IsOperation(charArray[charCount]))
+                { }
+                //					       parenthesis
 
-	}
+                charCount += 1;
+            }
+
+            stack.Push("first");
+            string sec = stack.Pop();
+            Console.WriteLine(sec);
+            return input;
+        }
+
+    }
 
 
-	class Operations
-	{
-						char[] operationList = {'+','-','*','\\'};
-		
-						static bool IsParenthesis(char symbol)
-		{
-			return true;
-		}
-
-						static public bool IsOperation(char symbol)
-		{
-			bool contains =false;   // 
-			if (operationList != null)
-			{
-				foreach (var c in operationList)
-				{
-					if (c == symbol)
-					{
-						contains = true;
-						break;
-					}
-
-					if (                )
-					{ }
-					return true;
-				}
-			}
-			return true;
-
-		}
 }

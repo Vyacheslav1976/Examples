@@ -9,7 +9,7 @@ namespace StringCalc
 		{
 			Console.WriteLine("Please, type exercise!");
 			String input = Console.ReadLine();
-			Calc calc = new Calc();
+			ICalc calc = new Calc();
 			if (calc.Check(input))
 			{
 				calc.Parse(input);
