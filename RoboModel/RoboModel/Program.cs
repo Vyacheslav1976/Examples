@@ -222,13 +222,15 @@ namespace RoboModel
                             // init R2 to move not ready item from L2 to M3 counter - 11c                           
                             if (L2_lotok.L2_state == L2_state.L2_not_ready_item_loaded) // waiting loading not_ready_item to L2
                             {
-                                R2_robot.operTime = R2_robot.operTime + 11;
-                                if (timeCounter == 0) { R2_robot.operTime++; }
+//                                R2_robot.operTime = R2_robot.operTime + 11;
+                                R2_robot.operTime = 11;
+                                //if (timeCounter == 0) { R2_robot.operTime++; }
                                 R2_new_status_flag = 0;
                                 L2_lotok.L2_state = L2_state.L2_empty;
+                                Console.WriteLine("L2 lotok {0}", L2_lotok.L2_state);
                             }
                             else {
-                                R2_robot.operTime++;
+                                R2_robot.operTime=1;
                                 Console.WriteLine("R2 waiting loading not_ready_item to L2");
                             }
                         }
@@ -260,7 +262,9 @@ namespace RoboModel
                                 R2_robot.R2_status = R2_state.R2_ready_to_move_ready_item_1_to_L3;
                                 M3_agregate.M3_status = M3_state.M3_Loaded;
                                 M3_new_status_flag = 1;
-                                Console.WriteLine("Switch to {0}", R2_robot.R2_status);
+                                Console.WriteLine("R2 switch to {0}", R2_robot.R2_status);
+                                Console.WriteLine("M3 Switch to {0}", M3_agregate.M3_status);
+                                M3_agregate.operTime = 0;
                                 R2_new_status_flag = 1;
                             }
                         }
@@ -281,6 +285,7 @@ namespace RoboModel
                             else
                             {
                                 L2_lotok.L2_state = L2_state.L2_empty;
+                                Console.WriteLine("L2 lotok {0}", L2_lotok.L2_state);
                             }
                         }
                         if (R2_robot.operTime == 0)
@@ -298,6 +303,17 @@ namespace RoboModel
                             // init R2 to move ready item from L2 to L3 counter - 6c                           
                             R2_robot.operTime = R2_robot.operTime + 6;
                             R2_new_status_flag = 0;
+                            if (L2_lotok.L2_state == L2_state.L2_empty)
+                            {
+                                // waiting for loading L2 
+                                R2_robot.operTime++;
+                                Console.WriteLine("R2 - waiting time for loading L2");
+                            }
+                            else
+                            {
+                                L2_lotok.L2_state = L2_state.L2_empty;
+                                Console.WriteLine("L2 lotok {0}", L2_lotok.L2_state);
+                            }
                         }
                         if (R2_robot.operTime == 0)
                         {
@@ -341,12 +357,13 @@ namespace RoboModel
                         }
                         if (R2_robot.operTime == 0)
                         {
-                            R2_robot.R2_status = R2_state.R2_waiting_for_L2_loaded_not_ready_item;
+                            //R2_robot.R2_status = R2_state.R2_waiting_for_L2_loaded_not_ready_item;
+                            R2_robot.R2_status = R2_state.R2_ready_to_move_not_ready_item_to_M3;
                             Console.WriteLine("Switch to {0}", R2_robot.R2_status);
                             R2_new_status_flag = 1;
                         }
-
                         break;
+/*
                     case R2_state.R2_waiting_for_L2_loaded_not_ready_item:
                         if (R2_new_status_flag == 1)
                         {
@@ -371,6 +388,7 @@ namespace RoboModel
                         }
 
                         break;
+                        */
                         } // end R2 switch
 
                     switch (M1_agregate.M1_status)

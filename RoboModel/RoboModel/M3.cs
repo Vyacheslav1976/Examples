@@ -17,7 +17,7 @@ namespace RoboModel
             Console.WriteLine("M3 initialisation -M3_ready_to_loading");
             M3_status = M3_state.M3_ready_to_loading;
             //            M3_status = M3_state.M3_Loaded;
-            operTime = 0;// 25;
+            operTime = 1;// 25;
         }
     }
 
