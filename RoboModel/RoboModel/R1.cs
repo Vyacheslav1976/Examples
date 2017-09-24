@@ -22,6 +22,7 @@ namespace RoboModel
         {
             Console.WriteLine("R1 initialisation - R1_ready");
             R1_status = R1_state.R1_ready;
+            operTime = 1;
         }
     }
 

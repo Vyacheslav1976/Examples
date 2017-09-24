@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agregate.cs" />
+    <Compile Include="L2.cs" />
     <Compile Include="M1.cs" />
     <Compile Include="M2.cs" />
     <Compile Include="M3.cs" />
