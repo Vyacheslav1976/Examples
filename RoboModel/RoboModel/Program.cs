@@ -27,13 +27,16 @@ namespace RoboModel
             int R1_new_status_flag = 1; // if new status just set flag = 1, else =0
             int R2_new_status_flag = 1; // if new status just set flag = 1, else =0
             int M3_new_status_flag = 1;
+            int M1_handled_items = 0;
+            int M2_handled_items = 0;
+            int M3_handled_items = 0;
             //=============
             //work cicle
             //=============
             while (!exit)
             {
                 Console.WriteLine("Time: {0} seconds", timeCounter);
-                if (timeCounter == 400) { exit = true; }
+                if (timeCounter == 3601) { exit = true; }
                 //                R1_robot
                 //==================================
                 //  R1 cicle
@@ -145,7 +148,7 @@ namespace RoboModel
                             R1_robot.R1_status = R1_state.R1_ready_to_move_from_M1_to_L2;
                             Console.WriteLine("Switch to {0}", R1_robot.R1_status);
                             M1_agregate.M1_status = M1_state.M1_ready_to_loading;
-                            R1_new_status_flag = 1;
+                            R1_new_status_flag = 1;                             
                         }
                         break;
                     case R1_state.R1_ready_to_move_from_M1_to_L2:
@@ -159,6 +162,7 @@ namespace RoboModel
                             if (R1_robot.operTime == 0)
                             {
                                 R1_robot.R1_status = R1_state.R1_L2_from_M1_loaded;
+                            M1_handled_items++;
                             if (L2_lotok.L2_state != L2_state.L2_not_ready_item_loaded
                             & L2_lotok.L2_state != L2_state.L2_ready_item_loaded)
                             {
@@ -198,6 +202,7 @@ namespace RoboModel
                         if (R1_robot.operTime == 0)
                         {
                             R1_robot.R1_status = R1_state.R1_ready;
+                            M2_handled_items++;
                             if (L2_lotok.L2_state != L2_state.L2_not_ready_item_loaded
                             & L2_lotok.L2_state != L2_state.L2_ready_item_loaded)
                             {
@@ -361,6 +366,7 @@ namespace RoboModel
                             R2_robot.R2_status = R2_state.R2_ready_to_move_not_ready_item_to_M3;
                             Console.WriteLine("Switch to {0}", R2_robot.R2_status);
                             R2_new_status_flag = 1;
+                            M3_handled_items++;
                         }
                         break;
 /*
@@ -442,8 +448,11 @@ namespace RoboModel
 
 
             }// end of while
+            Console.WriteLine("M1_handled_items={0}", M1_handled_items);
+            Console.WriteLine("M2_handled_items={0}", M2_handled_items);
+            Console.WriteLine("M3_handled_items={0}", M3_handled_items);
             Console.WriteLine("Press any key for exit");
-            Console.ReadLine();
+            Console.ReadKey();
         } //end of main
     }
    
